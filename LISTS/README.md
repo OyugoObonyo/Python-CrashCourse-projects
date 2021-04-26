@@ -1,1 +1,0 @@
-# Understanding lists in Python
