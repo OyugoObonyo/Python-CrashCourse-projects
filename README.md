@@ -1,3 +1,3 @@
-# PYTHON PRACTICE PROJECTS
+# PYTHON PRACTICE
 
-This repo contains projects assigned to readers at the end of every chapter in the book "Python Crash Course, 2nd Edition
+This repo contains solutions sourced to problem sets from various resources. All the solutions are implemented in Python
