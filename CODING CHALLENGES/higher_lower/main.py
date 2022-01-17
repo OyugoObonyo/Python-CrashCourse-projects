@@ -5,48 +5,47 @@ import random
 from data import data
 from art import logo, vs
 
-# Ensure question not repeating itself
-# Generate random quesses
-# Get user inputs
-# Ensure random positions aren't similar
-def get_index(list):
-    index = random.randint(0, (len(data)-1))
-    return index
 
-def user_input():
-    print("Who has more followers, A or B ? ")
-    
+def compare_dicts(data, dict_1, dict_2):
+    """
+    Function compares two dicts to ensure the randomly selected
+    dicts are not similar
+    """
+    while dict_2 == dict_1:
+        dict_2 == random.choice(data)
 
 
-def highest_followers(item1, item2):
-    if item1['follower_count'] > item2 ['follower_count']:
-        return item1
+def check_guess(guess, followers_a, followers_b):
+    """
+    Function that evaluates a user's guess
+    """
+    if guess == 'A' and followers_a > followers_b:
+        return True
+    elif guess == 'B' and followers_a < followers_b:
+        return True
     else:
-        return item2
+        return False
 
-if __name__ == '__main__':
-    proceed = True
-    points = 0
-    while proceed:
-        item_a = data[get_index(data)]
-        item_b = data[get_index(data)]
-        correct = highest_followers(item_a, item_b)
-        
-        print(logo)
-        print(f"Compare A: {item_a['name']}, a {item_a['description']}, from {item_a['country']}")
-        print(vs)
-        print(f"Against B: {item_b['name']}, a {item_b['description']}, from {item_b['country']}")
-        count_guess = input("Who has more followers, A or B ? ")
-        if count_guess == 'A':
-            if item_a['follower_count'] > item_b['follower_count']:
-                points += 1 
-                print(f'You got that right! Current score: {points}\n')
-            else:
-                print(f'Sorry, that is wrong. Final score: {points}\n')
-        elif count_guess == 'B':
-            if item_b['follower_count'] > item_a['follower_count']:
-                points += 1 
-                print(f'You got that right! Current score: {points}\n')
-            else:
-                print(f'Sorry, Your answer is not correct. Final score: {points}\n')
-                proceed = False
+
+proceed = True
+points = 0
+while proceed:
+    if points == 0:
+        item_a = random.choice(data)
+    else:
+        item_a = item_b
+    item_b = random.choice(data)
+    compare_dicts(data, item_a, item_b)
+
+    print(logo)
+    print(f"Compare A: {item_a['name']}, a {item_a['description']}, from {item_a['country']}")
+    print(vs)
+    print(f"Against B: {item_b['name']}, a {item_b['description']}, from {item_b['country']}")
+    count_guess = input("Who has more followers, A or B ? ")
+    is_correct = check_guess(count_guess, item_a['follower_count'], item_b['follower_count'] )
+    if is_correct:
+        points += 1
+        print(f'You got that right! Current score: {points}\n')
+    else:
+        print(f'Sorry, your answer is not correct. Final score: {points}\n')
+        proceed = False
