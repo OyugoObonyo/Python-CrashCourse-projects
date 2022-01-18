@@ -13,3 +13,5 @@ def highest_score(scores):
 
 if __name__ == "__main__":
     highest_score([78,65,89,86,55,91,64,89])
+
+# TODO: 1 PRINT
