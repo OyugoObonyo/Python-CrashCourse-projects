@@ -33,7 +33,7 @@ price_before_yesterday = float(data[before_yesterday]['4. close'])
 price_change = abs((price_yesterday-price_before_yesterday)/price_before_yesterday * 100)
 price_change = round(price_change, 2)
 
-if price_change >= 0:
+if price_change >= 5:
     params = {
         "q": "tesla",
         "apiKey": NEWS_API_KEY
