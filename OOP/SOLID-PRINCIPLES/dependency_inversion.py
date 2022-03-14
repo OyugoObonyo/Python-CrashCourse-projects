@@ -77,6 +77,10 @@ class ElectricPowerSwitch:
 
 
 l = LightBulb()
+tv = TelevisionSet()
 switch = ElectricPowerSwitch(l)
 switch.press()
 switch.press()
+tv_switch = ElectricPowerSwitch(tv)
+tv_switch.press()
+tv_switch.press()  
